@@ -45,7 +45,7 @@ const Signup = () => {
 
       // console.log([...formData.entries()])
       const response = await axios.post(
-        "http://localhost:3000/user/signup",
+        "https://chatapp-backend-1-p3lu.onrender.com/user/signup",
         formData,
         { withCredentials: true }
       );
@@ -123,7 +123,6 @@ const Signup = () => {
               <input
                 type="file"
                 name="image"
-                // value={user.image}
                 onChange={handleFilechange}
                 className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-600 transition-all"
               />

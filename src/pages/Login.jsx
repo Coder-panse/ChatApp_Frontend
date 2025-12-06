@@ -26,7 +26,7 @@ const Login = () => {
     try {
       e.preventDefault();
       const response = await axios.post(
-        "http://localhost:3000/user/login",
+        "https://chatapp-backend-1-p3lu.onrender.com/user/login",
         user,
         { withCredentials: true }
       );

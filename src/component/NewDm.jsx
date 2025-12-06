@@ -27,7 +27,7 @@ const NewDm = () => {
     try {
       if (search.length > 0) {
         const response = await axios.post(
-          "http://localhost:3000/contact/search",
+          "https://chatapp-backend-1-p3lu.onrender.com/contact/search",
           {search},
           { withCredentials: true }
           

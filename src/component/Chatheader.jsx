@@ -17,7 +17,7 @@ const Chatheader = () => {
         <div className="h-8 w-8 rounded-full overflow-hidden">
           <img
             className="h-full w-full object-cover"
-            src={`http://localhost:3000/images/${selectedUserData.image}`}
+            src={`https://chatapp-backend-1-p3lu.onrender.com/images/${selectedUserData.image}`}
             alt=""
           />
         </div>

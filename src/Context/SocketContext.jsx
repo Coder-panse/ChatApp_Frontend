@@ -17,7 +17,7 @@ const SocketProvider = ({children}) => {
         return
       }
 
-      socket.current=io("http://localhost:3000",{
+      socket.current=io("https://chatapp-backend-1-p3lu.onrender.com",{
         query:{
         userId:userDetail._id
         }

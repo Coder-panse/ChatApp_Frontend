@@ -86,10 +86,10 @@ const ChatcontextProvider = ({ children }) => {
     try {
       console.log(selectedRef.current._id);
       const response = await axios.get(
-        `http://localhost:3000/api/getmessage/${selectedRef.current._id}`,
+        `https://chatapp-backend-1-p3lu.onrender.com/api/getmessage/${selectedRef.current._id}`,
         { withCredentials: true }
       );
-      console.log(response.data.formattedMessage);
+      console.log(response.data);
       setMessages(response.data.formattedMessage);
     } catch (error) {
       console.log(error);

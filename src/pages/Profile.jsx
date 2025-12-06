@@ -36,7 +36,7 @@ const Profile = () => {
   const handleLanguage = async (lang) => {
     try {
       const response = await axios.put(
-        "http://localhost:3000/api/language",
+        "https://chatapp-backend-1-p3lu.onrender.com/api/language",
         { Language: lang },
         { withCredentials: true }
       );
@@ -64,7 +64,7 @@ const Profile = () => {
                 <div className="w-28 h-28 rounded-full overflow-hidden bg-neutral-800 ring-2 ring-neutral-800 ring-offset-4 ring-offset-neutral-900">
                   {userDetail.image ? (
                     <img
-                      src={`http://localhost:3000/images/${userDetail}`}
+                      src={`https://chatapp-backend-1-p3lu.onrender.com/images/${userDetail}`}
                       className="w-full h-full object-cover"
                     />
                   ) : (

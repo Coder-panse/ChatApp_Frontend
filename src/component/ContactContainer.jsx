@@ -13,7 +13,7 @@ const ContactContainer = () => {
 
   const logout = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/user/logout", {
+      const response = await axios.get("https://chatapp-backend-1-p3lu.onrender.com/user/logout", {
         withCredentials: true,
       });
       localStorage.clear();
@@ -46,7 +46,7 @@ const ContactContainer = () => {
         <div className="flex gap-4">
 
           <div className="h-8 w-8 rounded-full overflow-hidden">
-          <img className="h-full w-full object-cover" src={`http://localhost:3000/images/${userDetail.image}`} alt="" />
+          <img className="h-full w-full object-cover" src={`https://chatapp-backend-1-p3lu.onrender.com/images/${userDetail.image}`} alt="" />
         </div>
         <div 
         className="flex gap-3 items-center justify-between "
