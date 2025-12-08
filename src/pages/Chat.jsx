@@ -4,6 +4,7 @@ import ContactContainer from "../component/ContactContainer";
 import Emptycontainer from "../component/Emptycontainer";
 import { selectedUser } from "@/Context/SelectUserContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Chat = () => {
   const { selectedUserData } = useContext(selectedUser);
@@ -13,6 +14,7 @@ const Chat = () => {
     if (!localStorage.getItem("userEmail")) {
       navigate("/login");
     }
+    toast.success("Welcome to Gupshup")
   }, []);
   return (
     <div className="flex h-[100vh] text-white overflow-hidden">
