@@ -9,34 +9,41 @@ import {
   Edit2,
   Save,
   X,
+  Loader2
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { userInfo } from "@/Context/UserContext";
 
+
 const Login = () => {
   const { userDetail, setUserDetail } = useContext(userInfo);
   const [user, setUser] = useState({ email: "", password: "" });
+  const [loginFlag,setLoginFlag]=useState(true);
   const setLogin = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     try {
       e.preventDefault();
+      setLoginFlag(false)
       const response = await axios.post(
         "https://chatapp-backend-1-p3lu.onrender.com/user/login",
         user,
         { withCredentials: true }
       );
-
+      if(response) setLoginFlag(true)
       setUserDetail(response.data.user);
       // console.log(response.data)
       localStorage.setItem("userEmail", response.data.user.email);
+      
       navigate("/");
     } catch (error) {
       console.log(error);
+      
     }
   };
 
@@ -86,7 +93,12 @@ const Login = () => {
                 className="w-full px-5 py-3 bg-white text-neutral-900 rounded-xl font-medium hover:bg-neutral-100 transition-all flex items-center justify-center gap-2"
                 onClick={handleLogin}
               >
-                Login
+                {loginFlag?"Login":(
+                 <>
+                 <Loader2/>
+                  Logging...
+                  </> 
+                )}
               </button>
             </div>
 

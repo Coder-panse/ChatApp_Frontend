@@ -9,19 +9,25 @@ import {
   Edit2,
   Save,
   X,
+  Image,
+  Phone,
+  Loader2
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { userInfo } from "@/Context/UserContext";
 
+
 const Signup = () => {
 
   const { userDetail, setUserDetail } = useContext(userInfo);
+  const [loading,setLoading]=useState(true)
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
+    contactNo:"",
     language: undefined,
   });
   const [image, setImage] = useState("")
@@ -37,10 +43,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      setLoading(false)
       const formData=new FormData();
       formData.append("username",user.username)
       formData.append("email",user.email)
       formData.append("password",user.password)
+      formData.append("contactNo",user.contactNo)
       formData.append("image",image)
 
       // console.log([...formData.entries()])
@@ -49,19 +57,23 @@ const Signup = () => {
         formData,
         { withCredentials: true }
       );
+      if(response) setLoading(true)
       setUserDetail(response.data.user);
       // console.log(response.data)
+
       localStorage.setItem("userEmail", response.data.user.email);
-      navigate("/");
+      
       setUser({username:"",email:"",password:""})
       setImage({image:""})
+      navigate("/");
       // console.log(response);
     } catch (error) {
       console.log(error);
+      
     }
   };
   return (
-    <div className="bg-neutral-950 h-screen w-full flex justify-center items-center">
+    <div className="bg-neutral-950 w-full flex justify-center items-center">
       <div className="w-full max-w-[500px] bg-neutral-900 text-white rounded-2xl shadow-2xl p-3 md:p-8 mx-auto">
         <div className="text-center px-5 py-10 ">
           <h1 className="text-2xl md:text-4xl font-bold ">Welcome To GupSuph</h1>
@@ -80,6 +92,20 @@ const Signup = () => {
                 type="text"
                 name="username"
                 value={user.username}
+                onChange={handleSignup}
+                className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-600 transition-all"
+              />
+            </div>
+
+            <div className="space-y-2 mt-6">
+              <label className="flex items-center text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                <Phone className="w-3.5 h-3.5 mr-2" />
+                Contact Number
+              </label>
+              <input
+                type="tel"
+                name="contactNo"
+                value={user.contactNo}
                 onChange={handleSignup}
                 className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-600 transition-all"
               />
@@ -116,7 +142,8 @@ const Signup = () => {
 
             <div className="space-y-2 mt-6">
               <label className="flex items-center text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                <Lock className="w-3.5 h-3.5 mr-2" />
+               
+                <Image className="w-3.5 h-3.5 mr-2"/>
                 Profile Pic
               </label>
 
@@ -134,7 +161,12 @@ const Signup = () => {
                className="w-full px-5 py-3 bg-white text-neutral-900 rounded-xl font-medium hover:bg-neutral-100 transition-all flex items-center justify-center gap-2"
                 onClick={handleSubmit}
               >
-                Signup
+                {loading?"Signup":(
+                  <>
+                  <Loader2/>
+                  Signing...
+                  </>
+                )}
               </button>
             </div>
 
