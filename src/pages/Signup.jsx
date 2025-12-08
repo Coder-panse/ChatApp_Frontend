@@ -27,7 +27,6 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
-    contactNo:"",
     language: undefined,
   });
   const [image, setImage] = useState("")
@@ -48,7 +47,7 @@ const Signup = () => {
       formData.append("username",user.username)
       formData.append("email",user.email)
       formData.append("password",user.password)
-      formData.append("contactNo",user.contactNo)
+      // formData.append("contactNo",user.contactNo)
       formData.append("image",image)
 
       // console.log([...formData.entries()])
@@ -97,7 +96,7 @@ const Signup = () => {
               />
             </div>
 
-            <div className="space-y-2 mt-6">
+            {/* <div className="space-y-2 mt-6">
               <label className="flex items-center text-xs font-medium text-neutral-500 uppercase tracking-wider">
                 <Phone className="w-3.5 h-3.5 mr-2" />
                 Contact Number
@@ -109,7 +108,7 @@ const Signup = () => {
                 onChange={handleSignup}
                 className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-600 transition-all"
               />
-            </div>
+            </div> */}
 
             <div className="space-y-2 mt-6">
               <label className="flex items-center text-xs font-medium text-neutral-500 uppercase tracking-wider">

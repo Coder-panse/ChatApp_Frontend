@@ -14,7 +14,7 @@ const Chat = () => {
     if (!localStorage.getItem("userEmail")) {
       navigate("/login");
     }
-    toast.success("Welcome to Gupshup")
+    toast.success("Welcome to Gupshup",{ duration: 2000 })
   }, []);
   return (
     <div className="flex h-[100vh] text-white overflow-hidden">

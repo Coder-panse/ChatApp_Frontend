@@ -7,7 +7,7 @@ const Messagecontainer = () => {
   const { messages } = useContext(Chatcontext);
   const {userDetail} = useContext(userInfo)
   return (
-    <div className="flex-1 overflow-y-auto scrollbar-hidden p-4 px-8 md:w-[65vw] lg:w-[70vw] xl:w-[80vw] w-full">
+    <div className="flex-1 overflow-y-auto h-screen scrollbar-hidden p-4 px-8 md:w-[65vw] lg:w-[70vw] xl:w-[80vw] w-full">
       {messages.map((msg, i) => {
         const isSentByMe = msg.sender === userDetail._id;
         return (
